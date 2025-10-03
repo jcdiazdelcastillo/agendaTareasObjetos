@@ -20,8 +20,7 @@ const agenda = {
             this.tareas.forEach ((tarea, i)=>{
             console.log("TAREA" + i + " Descricpion: "+tarea.descripcion +" Priodidad: "+ tarea.prioridad + " Estado: " + tarea.estado);
         });
-    }
-
+        }
     },
 
     marcarCompletada(indice){
@@ -98,18 +97,16 @@ function menuParte2(op) {
 
     switch(op) {
         case 1:
-            agregarTareaFuera();
+            agenda.agregarTarea(prompt("Descripcion: "), Number(prompt("Prioridad: ")));
             break;
         case 2:
             agenda.listarTareas();
             break;
         case 3:
-            let indice = Number(prompt("Introduce tarea para marcar como completada: "));
-            agenda.marcarCompletada(indice);
+            agenda.marcarCompletada(Number(prompt("Introduce tarea para marcar como completada")));
             break;
         case 4:
-            let ind = Number(prompt("Introduce tarea a eliminar: "));
-            agenda.eliminarTarea(ind);
+            agenda.eliminarTarea(Number(prompt("Introduce tarea a eliminar: ")));
             break;
         case 5:
             agenda.listarPendientes();
@@ -126,15 +123,5 @@ function menuParte2(op) {
         default:
             console.log("NO VALIDO");
     }
-
-}
-function agregarTareaFuera(){
-    let prioridad;
-    let descripcion=prompt("Introduce descripción: ");
-    do{
-        prioridad = Number(prompt("introduce prioridad (entre 1-3): "));
-    }while(prioridad <1 || prioridad>3);
-    
-    agenda.agregarTarea(descripcion, prioridad);
 
 }
